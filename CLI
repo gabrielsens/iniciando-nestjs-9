@@ -1,0 +1,5 @@
+-> nest generate module bank-accounts  -- Gerar novo modulo na pasta com o nome e registrar no app.module
+
+➜ nest generate controller bank-accounts/test  -- Cria um controler na pasta do nome / com prefixo ('test')
+
+-> nest g resource -- cria um recusro ex: Rest API com crud entry points
