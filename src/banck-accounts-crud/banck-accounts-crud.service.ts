@@ -1,15 +1,15 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { getDataSourceToken, InjectRepository } from '@nestjs/typeorm';
+import { BankAccountTypeOrmShema } from 'src/@core/infra/db/bank-account-typeorm.schema';
 import { DataSource, Repository } from 'typeorm';
 import { CreateBanckAccountsCrudDto } from './dto/create-banck-accounts-crud.dto';
 import { UpdateBanckAccountsCrudDto } from './dto/update-banck-accounts-crud.dto';
-import { BanckAccountsCrud } from './entities/banck-accounts-crud.entity';
 
 @Injectable()
 export class BanckAccountsCrudService {
   constructor(
-    @InjectRepository(BanckAccountsCrud)
-    private repo: Repository<BanckAccountsCrud>,
+    @InjectRepository(BankAccountTypeOrmShema)
+    private repo: Repository<BankAccountTypeOrmShema>,
     @Inject(getDataSourceToken())
     private dataSource: DataSource,
   ) {}

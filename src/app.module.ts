@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { BankAccountsModule } from './bank-accounts/bank-accounts.module';
 import { BanckAccountsCrudModule } from './banck-accounts-crud/banck-accounts-crud.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { BanckAccountsCrud } from './banck-accounts-crud/entities/banck-accounts-crud.entity';
+import { BankAccountTypeOrmShema } from './@core/infra/db/bank-account-typeorm.schema';
 // ES7 decorators - maneira elegante de extender uma classe
 @Module({
   imports: [
@@ -13,7 +13,7 @@ import { BanckAccountsCrud } from './banck-accounts-crud/entities/banck-accounts
       database: __dirname + '/db.sqlite',
       synchronize: true,
       logging: true,
-      entities: [BanckAccountsCrud],
+      entities: [BankAccountTypeOrmShema],
     }),
     BankAccountsModule,
     BanckAccountsCrudModule,

@@ -8,6 +8,7 @@ import {
   Delete,
   HttpCode,
 } from '@nestjs/common';
+import { BankAccountService } from '../@core/domain/bank-account.service';
 import { BanckAccountsCrudService } from './banck-accounts-crud.service';
 import { CreateBanckAccountsCrudDto } from './dto/create-banck-accounts-crud.dto';
 import { TransferBankAccountDto } from './dto/transfer-bank-accounts-crud.dto';
@@ -17,11 +18,14 @@ import { UpdateBanckAccountsCrudDto } from './dto/update-banck-accounts-crud.dto
 export class BanckAccountsCrudController {
   constructor(
     private readonly banckAccountsCrudService: BanckAccountsCrudService,
+    private readonly bankAccountService: BankAccountService,
   ) {}
 
   @Post()
   create(@Body() createBanckAccountsCrudDto: CreateBanckAccountsCrudDto) {
-    return this.banckAccountsCrudService.create(createBanckAccountsCrudDto);
+    return this.bankAccountService.create(
+      createBanckAccountsCrudDto.account_number,
+    );
   }
 
   @Get()
