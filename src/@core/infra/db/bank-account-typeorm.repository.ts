@@ -9,6 +9,19 @@ export class BankAccountTypeOrmRepository implements BankAccountRepository {
 
   async insert(bankAccount: BankAccount): Promise<void> {
     const model = this.ormRepo.create(bankAccount);
-    await this.ormRepo.save(model);
+    await this.ormRepo.insert(model);
+  }
+
+  async findByAccountNumber(account_number: string): Promise<BankAccount> {
+    const model = await this.ormRepo.findOneBy({
+      account_number: account_number,
+    });
+    return new BankAccount(model.balance, model.account_number, model.id);
+  }
+
+  async update(bankAccount: BankAccount) {
+    this.ormRepo.update(bankAccount.id, {
+      balance: bankAccount.balance,
+    });
   }
 }

@@ -54,7 +54,7 @@ export class BanckAccountsCrudController {
   @HttpCode(204)
   @Post('transfer')
   transfer(@Body() transferDto: TransferBankAccountDto) {
-    return this.banckAccountsCrudService.transfer(
+    return this.bankAccountService.transfer(
       transferDto.from,
       transferDto.to,
       transferDto.amount,
